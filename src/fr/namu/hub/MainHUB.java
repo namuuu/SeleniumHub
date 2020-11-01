@@ -1,5 +1,6 @@
 package fr.namu.hub;
 
+import fr.namu.hub.command.BuildCMD;
 import fr.namu.hub.command.MuteChatCMD;
 import fr.namu.hub.listener.*;
 import fr.namu.hub.menu.MenuHUB;
@@ -66,9 +67,11 @@ public class MainHUB extends JavaPlugin {
         pm.registerEvents(new ClickEvent(this), this);
         pm.registerEvents(new ProcessCommandEvent(this), this);
         pm.registerEvents(new ChatEvent(this), this);
+        pm.registerEvents(new BuildEvent(this), this);
     }
 
     private void setCommands() {
         getCommand("mutechat").setExecutor(new MuteChatCMD(this));
+        getCommand("build").setExecutor(new BuildCMD(this));
     }
 }

@@ -5,5 +5,7 @@ version: 1.0
 commands:
   mutechat:
     usage: Permet de mute le chat, seuls le personnel du Staff (Weight 500) sera autorisé à parler.
+  build:
+    usage: Permet de construire sur le Lobby. Tu dois avoir le rang BUILDER ou la permission "hub.build" pour l'utiliser.
 depend:
   - LuckPerms

@@ -3,6 +3,7 @@ package fr.namu.hub;
 import fr.namu.hub.enums.Rank;
 import fr.namu.hub.util.InfoUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 public class PlayerHUB {
@@ -14,6 +15,7 @@ public class PlayerHUB {
     private Rank rank = null;
 
     private Boolean canFly = Boolean.valueOf(false);
+    private Boolean canBuild = Boolean.valueOf(false);
 
     public PlayerHUB (MainHUB main, Player player) {
         this.main = main;
@@ -47,5 +49,33 @@ public class PlayerHUB {
     public void setFly(Boolean value) {
         player.setAllowFlight(value);
         canFly = Boolean.valueOf(value);
+    }
+
+    public Boolean canBuild() {
+        return this.canBuild;
+    }
+    public void switchBuild() {
+        if(canBuild) {
+            player.sendMessage(InfoUtil.prefix + "§fTu ne peux plus build !");
+            player.setGameMode(GameMode.ADVENTURE);
+            canBuild = Boolean.valueOf(false);
+            this.main.lobby.giveLobbyStuff(player);
+        } else {
+            player.sendMessage(InfoUtil.prefix + "§fTu peux build désormais !");
+            player.setGameMode(GameMode.CREATIVE);
+            canBuild = Boolean.valueOf(true);
+            player.getInventory().clear();
+        }
+    }
+    public void setBuild(Boolean value) {
+        canBuild = Boolean.valueOf(value);
+        if(canBuild) {
+            player.setGameMode(GameMode.CREATIVE);
+            player.getInventory().clear();
+
+        } else {
+            player.setGameMode(GameMode.ADVENTURE);
+            this.main.lobby.giveLobbyStuff(player);
+        }
     }
 }

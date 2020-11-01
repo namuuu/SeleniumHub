@@ -58,6 +58,8 @@ public class JoinLeaveEvent implements Listener {
 
         player.setHealth(player.getMaxHealth());
         player.setFoodLevel(20);
+        player.setLevel(0);
+        player.setExp(0);
 
         phub.setFly(false);
 

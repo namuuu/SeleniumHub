@@ -1,22 +1,26 @@
 package fr.namu.hub.enums;
 
 public enum Rank {
-    PLAYER("player", "rank.player", "§7", "§7[Joueur] "),
-    DEV("dev", "group.dev", "§6DEV §7»", "§7[§6Dev§7] §f"),
+    PLAYER("player", 0, "§7", "§7[Joueur] "),
+    BUILDER("builder", 600, "§aBUILD §7» ", "§7[§aBuild§7] §f"),
+    HELPER("helper", 700, "§5HELP §7»", "§7[§5Helper§7] §f"),
+    MOD("modo", 800, "§2MOD §7»", "§7[§2Modérateur§7] §f"),
+    DEV("dev", 900, "§6DEV §7»", "§7[§6Dev§7] §f"),
+    ADMIN("admin", 1000, "§cADMIN §7» ", "§7[§cAdmin§7] §f"),
 
     ;
 
 
 
     private String name;
-    private String permission;
+    private int weight;
     private String prefix;
     private String fullname;
 
 
-    Rank(String name, String permission, String prefix, String fullname) {
+    Rank(String name, int weight, String prefix, String fullname) {
         this.name = name;
-        this.permission = permission;
+        this.weight = weight;
         this.prefix = prefix;
         this.fullname = fullname;
     }
@@ -28,11 +32,11 @@ public enum Rank {
         this.name = name;
     }
 
-    public String getPermission() {
-        return permission;
+    public Integer getWeight() {
+        return weight;
     }
-    public void setPermission(String permission) {
-        this.permission = permission;
+    public void setWeight(String permission) {
+        this.weight = weight;
     }
 
     public String getPrefix() {

@@ -2,5 +2,8 @@ main: fr.namu.hub.MainHUB
 name: SeleniumHUB
 author: Namu
 version: 1.0
+commands:
+  mutechat:
+    usage: Permet de mute le chat, seuls le personnel du Staff (Weight 500) sera autorisé à parler.
 depend:
   - LuckPerms

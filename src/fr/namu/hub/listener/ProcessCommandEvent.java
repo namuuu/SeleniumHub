@@ -1,17 +1,24 @@
 package fr.namu.hub.listener;
 
 import fr.namu.hub.MainHUB;
+import fr.namu.hub.PlayerHUB;
 import fr.namu.hub.util.InfoUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChatTabCompleteEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import sun.applet.Main;
 
 public class ProcessCommandEvent implements Listener {
 
+    private MainHUB main;
+
+    private String[] blockedCommands = new String[] {"/me", "/tell", "/about", "/pl", "/plugins", "/?", "/version", "/ver"};
 
     public ProcessCommandEvent(MainHUB mainHUB) {
+        this.main = main;
     }
 
     @EventHandler
@@ -19,9 +26,12 @@ public class ProcessCommandEvent implements Listener {
         Player player = event.getPlayer();
         String[] cmd = event.getMessage().split(" ");
 
-        if(cmd[0].equalsIgnoreCase("/me") || cmd[0].equalsIgnoreCase("/tell")) {
-            event.setCancelled(true);
-            return;
+        for (int i = 0; i < blockedCommands.length; i++)
+        {
+            if (blockedCommands[i].equalsIgnoreCase(cmd[0])) {
+                event.setCancelled(true);
+                return;
+            }
         }
 
         if(cmd[0].equalsIgnoreCase("/msg")) {
@@ -45,6 +55,24 @@ public class ProcessCommandEvent implements Listener {
                 }
             }
             player.sendMessage(InfoUtil.prefix + "§cNous n'avons pas trouvé le joueur en question !");
+        }
+    }
+
+    @EventHandler
+    public void onTab(PlayerChatTabCompleteEvent event) {
+        Player player = event.getPlayer();
+        PlayerHUB phub = this.main.phub.get(player.getUniqueId());
+
+        String[] msg = event.getChatMessage().split(" ");
+
+        if(phub.getRank().getWeight() < 800) {
+            switch (msg[0]) {
+                case "/":
+                case "/ver":
+                case "/version":
+                case "/about":
+                    event.getTabCompletions().clear();
+            }
         }
     }
 }

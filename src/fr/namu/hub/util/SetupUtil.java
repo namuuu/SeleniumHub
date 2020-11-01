@@ -42,6 +42,6 @@ public class SetupUtil {
     }
 
     private void setLocations() {
-        this.main.info.setLobby(new Location(Bukkit.getWorld("world"), 8.5, 43, 33.5));
+        this.main.info.setLobby(new Location(Bukkit.getWorld("world"), 149.529, 89, 229.488));
     }
 }

@@ -59,7 +59,6 @@ public class JoinLeaveEvent implements Listener {
         player.setHealth(player.getMaxHealth());
         player.setFoodLevel(20);
 
-        this.main.lobby.giveLobbyStuff(player);
         phub.setFly(false);
 
         for(PotionEffect pe : player.getActivePotionEffects())
@@ -96,6 +95,8 @@ public class JoinLeaveEvent implements Listener {
         if(phub.getRank() != Rank.PLAYER) {
             Bukkit.broadcastMessage(player.getPlayerListName() + "§e a rejoint le Lobby !");
         }
+
+        this.main.lobby.giveLobbyStuff(player);
     }
 
     public void resetPlayers() {

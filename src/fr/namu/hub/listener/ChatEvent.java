@@ -24,6 +24,7 @@ public class ChatEvent implements Listener {
         if(this.main.info.isMuteChat() && phub.getRank().getWeight() < 500) {
             event.setCancelled(true);
             player.sendMessage(InfoUtil.prefix + "§cLe chat est actuellement mute. Essayez plus tard !");
+            System.out.println("[HIDDEN_CHAT] " + player.getName() + ": " + event.getMessage());
             return;
         }
 

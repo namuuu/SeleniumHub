@@ -2,3 +2,5 @@ main: fr.namu.hub.MainHUB
 name: SeleniumHUB
 author: Namu
 version: 1.0
+depend:
+  - LuckPerms

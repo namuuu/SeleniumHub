@@ -7,6 +7,8 @@ public class MenuHUB {
     public MainHUB main;
 
     public NavigateMenu navigate = new NavigateMenu(this);
+    public LobbyListMenu lobbyList = new LobbyListMenu(this);
+    public ParticleMenu particle = new ParticleMenu(this);
 
 
 

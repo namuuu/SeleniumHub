@@ -30,8 +30,8 @@ public class ScoreBoard {
                 "Grade: §b" + phub.getRank().getFullname(),
                 "Coins: §b" + 0,
                 " ",
-                "Lobby: §b" + "LOBBY01",
-                "Joueurs: §b" + Bukkit.getOnlinePlayers().size(),
+                "Lobby: §b" + phub.getCurrentServerName(),
+                "Joueurs: §b" + phub.getCurrentTotalPlayers(),
                 " ",
                 "§7play.selenium-pvp.com",
                 "§7§m----------------------"
@@ -49,5 +49,7 @@ public class ScoreBoard {
 
         board.updateTitle("§7» §eSELENIUM §7«");
         board.updateLines(score);
+
+        this.main.pm.setTotalMembers(player);
     }
 }

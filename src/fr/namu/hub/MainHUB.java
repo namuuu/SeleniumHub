@@ -1,8 +1,10 @@
 package fr.namu.hub;
 
+import com.comphenix.protocol.ProtocolManager;
 import fr.namu.hub.bungee.PluginMessage;
 import fr.namu.hub.command.BuildCMD;
 import fr.namu.hub.command.MuteChatCMD;
+import fr.namu.hub.command.PingCMD;
 import fr.namu.hub.listener.*;
 import fr.namu.hub.menu.MenuHUB;
 import fr.namu.hub.scoreboard.FastBoard;
@@ -10,6 +12,7 @@ import fr.namu.hub.scoreboard.ScoreBoard;
 import fr.namu.hub.scoreboard.TabList;
 import fr.namu.hub.util.InfoUtil;
 import fr.namu.hub.util.LobbyUtil;
+import fr.namu.hub.util.ParticleUtil;
 import fr.namu.hub.util.SetupUtil;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
@@ -33,10 +36,12 @@ public class MainHUB extends JavaPlugin {
     public LobbyUtil lobby = new LobbyUtil(this);
     public MenuHUB menu = new MenuHUB(this);
     public TabList tab = new TabList(this);
+    public ParticleUtil particle = new ParticleUtil(this);
 
     public PluginMessage pm = new PluginMessage(this);
 
     public LuckPerms luckPerms;
+    public ProtocolManager protocol;
 
 
     @EventHandler
@@ -76,5 +81,6 @@ public class MainHUB extends JavaPlugin {
     private void setCommands() {
         getCommand("mutechat").setExecutor(new MuteChatCMD(this));
         getCommand("build").setExecutor(new BuildCMD(this));
+        getCommand("ping").setExecutor(new PingCMD());
     }
 }

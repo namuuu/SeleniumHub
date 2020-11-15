@@ -3,6 +3,7 @@ package fr.namu.hub.listener;
 import fr.namu.hub.MainHUB;
 import fr.namu.hub.PlayerHUB;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,6 +36,13 @@ public class InteractEvent implements Listener {
         switch (current.getItemMeta().getDisplayName()) {
             case "§f§lFly":
                 phub.switchFly();
+                break;
+            case "§b§lChanger de Lobby":
+                this.main.menu.lobbyList.open(player);
+                break;
+            case "§e§lBoutique":
+                player.sendMessage("§cIndisponible pour le moment... :(");
+                player.playSound(player.getLocation(), Sound.VILLAGER_NO, 1, 1);
                 break;
             case "§e§lPlay":
                 this.main.menu.navigate.open(player);

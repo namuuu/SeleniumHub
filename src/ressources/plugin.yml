@@ -7,5 +7,7 @@ commands:
     usage: Permet de mute le chat, seuls le personnel du Staff (Weight 500) sera autorisé à parler.
   build:
     usage: Permet de construire sur le Lobby. Tu dois avoir le rang BUILDER ou la permission "hub.build" pour l'utiliser.
+  ping:
+    usage: Permet de prendre la connaissance du ping de soi-même ou autrui.
 depend:
   - LuckPerms

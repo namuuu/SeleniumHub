@@ -1,5 +1,6 @@
 package fr.namu.hub.util;
 
+import com.comphenix.protocol.ProtocolLibrary;
 import fr.namu.hub.MainHUB;
 import fr.namu.hub.bungee.PluginMessage;
 import fr.namu.hub.enums.Rank;
@@ -23,6 +24,8 @@ public class SetupUtil {
         setRunnable();
         setLocations();
         setPluginChannel();
+
+        this.main.protocol = ProtocolLibrary.getProtocolManager();
     }
 
     private void setTeamRank() {

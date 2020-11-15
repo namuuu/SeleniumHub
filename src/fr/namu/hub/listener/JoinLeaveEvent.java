@@ -99,17 +99,15 @@ public class JoinLeaveEvent implements Listener {
         }
 
         this.main.lobby.giveLobbyStuff(player);
+
+        Bukkit.getScheduler().runTaskLater(this.main, () -> this.main.pm.setServerName(player), 20);
     }
 
     public void resetPlayers() {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                for(Player player : Bukkit.getOnlinePlayers()) {
-                    newPlayer(player);
-                }
+        Bukkit.getScheduler().runTaskLater(this.main, () -> {
+            for(Player player : Bukkit.getOnlinePlayers()) {
+                newPlayer(player);
             }
-        }.runTaskLater(this.main, 20*3L);
-
+        }, 20*3);
     }
 }

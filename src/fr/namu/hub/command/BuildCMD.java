@@ -27,7 +27,7 @@ public class BuildCMD implements CommandExecutor {
         Player player = (Player)sender;
         PlayerHUB phub = this.main.phub.get(player.getUniqueId());
 
-        if(phub.getRank() != Rank.BUILDER) {
+        if(!player.hasPermission("selenium.build")) {
             player.sendMessage(InfoUtil.prefix + "§cTu n'as pas les droits d'utiliser cette commande !");
             return true;
         }
@@ -47,14 +47,14 @@ public class BuildCMD implements CommandExecutor {
         }
 
         if(phub.canBuild()) {
-            Bukkit.broadcastMessage(" ");
-            Bukkit.broadcastMessage("    §aTu peux à présent build sur le Lobby !");
-            Bukkit.broadcastMessage(" ");
+            player.sendMessage(" ");
+            player.sendMessage("    §aTu peux à présent build sur le Lobby !");
+            player.sendMessage(" ");
             return true;
         } else {
-            Bukkit.broadcastMessage(" ");
-            Bukkit.broadcastMessage("    §aTu ne peux plus build sur le Lobby !");
-            Bukkit.broadcastMessage(" ");
+            player.sendMessage(" ");
+            player.sendMessage("    §aTu ne peux plus build sur le Lobby !");
+            player.sendMessage(" ");
         }
 
 

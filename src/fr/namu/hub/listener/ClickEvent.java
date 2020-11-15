@@ -45,6 +45,13 @@ public class ClickEvent implements Listener {
             case "§7Menu principal":
                 event.setCancelled(true);
                 this.main.menu.navigate.click(player, currentName, click);
+                break;
+            case "§7Liste des lobbys":
+                event.setCancelled(true);
+                break;
+            case "§7Liste des Particules":
+                event.setCancelled(true);
+                this.main.menu.particle.click(player, currentName);
         }
     }
 }
